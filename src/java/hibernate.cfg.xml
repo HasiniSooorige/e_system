@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!--
+DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+Copyright (c) 2008, 2016 Oracle and/or its affiliates. All rights reserved.
+
+Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+The contents of this file are subject to the terms of either the GNU
+General Public License Version 2 only ("GPL") or the Common
+Development and Distribution License("CDDL") (collectively, the
+"License"). You may not use this file except in compliance with the
+License. You can obtain a copy of the License at
+http://www.netbeans.org/cddl-gplv2.html
+or nbbuild/licenses/CDDL-GPL-2-CP. See the License for the
+specific language governing permissions and limitations under the
+License.  When distributing the software, include this License Header
+Notice in each file and include the License file at
+nbbuild/licenses/CDDL-GPL-2-CP.  Oracle designates this
+particular file as subject to the "Classpath" exception as provided
+by Oracle in the GPL Version 2 section of the License file that
+accompanied this code. If applicable, add the following below the
+License Header, with the fields enclosed by brackets [] replaced by
+your own identifying information:
+"Portions Copyrighted [year] [name of copyright owner]"
+
+If you wish your version of this file to be governed by only the CDDL
+or only the GPL Version 2, indicate your decision by adding
+"[Contributor] elects to include this software in this distribution
+under the [CDDL or GPL Version 2] license." If you do not indicate a
+single choice of license, a recipient has the option to distribute
+your version of this file under either the CDDL, the GPL Version 2 or
+to extend the choice of license to its licensees as provided above.
+However, if you add GPL Version 2 code and therefore, elected the GPL
+Version 2 license, then the option applies only if the new code is
+made subject to such option by the copyright holder.
+
+Contributor(s):
+-->
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/exon_db?allowPublicKeyRetrieval=true&amp;useSSL=false&amp;zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">1234</property>
+    <mapping resource="Model/Mapping/PettyCashApprovalLevel.hbm.xml"/>
+    <mapping resource="Model/Mapping/Claims.hbm.xml"/>
+    <mapping resource="Model/Mapping/HelpTicketSubmitType.hbm.xml"/>
+    <mapping resource="Model/Mapping/UserRole.hbm.xml"/>
+    <mapping resource="Model/Mapping/HelpTicketCategory.hbm.xml"/>
+    <mapping resource="Model/Mapping/UserCredentialViewRequest.hbm.xml"/>
+    <mapping resource="Model/Mapping/ProjectTaskAttachments.hbm.xml"/>
+    <mapping resource="Model/Mapping/VoucherType.hbm.xml"/>
+    <mapping resource="Model/Mapping/UserCredentialHistory.hbm.xml"/>
+    <mapping resource="Model/Mapping/GeneralOrganizationProfile.hbm.xml"/>
+    <mapping resource="Model/Mapping/LeaveApprovalStatus.hbm.xml"/>
+    <mapping resource="Model/Mapping/Status.hbm.xml"/>
+    <mapping resource="Model/Mapping/LeaveType.hbm.xml"/>
+    <mapping resource="Model/Mapping/UserCredentialRole.hbm.xml"/>
+    <mapping resource="Model/Mapping/HelpTicket.hbm.xml"/>
+    <mapping resource="Model/Mapping/InterfaceSubMenu.hbm.xml"/>
+    <mapping resource="Model/Mapping/SystemInterface.hbm.xml"/>
+    <mapping resource="Model/Mapping/ProjectEmployees.hbm.xml"/>
+    <mapping resource="Model/Mapping/Voucher.hbm.xml"/>
+    <mapping resource="Model/Mapping/ClaimApproval.hbm.xml"/>
+    <mapping resource="Model/Mapping/UserLogin.hbm.xml"/>
+    <mapping resource="Model/Mapping/InterfaceMenu.hbm.xml"/>
+    <mapping resource="Model/Mapping/UserCredentialType.hbm.xml"/>
+    <mapping resource="Model/Mapping/TaskAssignEmployees.hbm.xml"/>
+    <mapping resource="Model/Mapping/ClaimApprovalType.hbm.xml"/>
+    <mapping resource="Model/Mapping/HelpTicketRespondType.hbm.xml"/>
+    <mapping resource="Model/Mapping/Employee.hbm.xml"/>
+    <mapping resource="Model/Mapping/HelpTicketStatus.hbm.xml"/>
+    <mapping resource="Model/Mapping/ProjectEmployeeRole.hbm.xml"/>
+    <mapping resource="Model/Mapping/CredentialRoles.hbm.xml"/>
+    <mapping resource="Model/Mapping/PettyCashWallet.hbm.xml"/>
+    <mapping resource="Model/Mapping/HelpTicketRespond.hbm.xml"/>
+    <mapping resource="Model/Mapping/ProjectTaskPriority.hbm.xml"/>
+    <mapping resource="Model/Mapping/PettyCashTransactionHistoryDocument.hbm.xml"/>
+    <mapping resource="Model/Mapping/OrganizationType.hbm.xml"/>
+    <mapping resource="Model/Mapping/ClaimItems.hbm.xml"/>
+    <mapping resource="Model/Mapping/Department.hbm.xml"/>
+    <mapping resource="Model/Mapping/Projects.hbm.xml"/>
+    <mapping resource="Model/Mapping/PaymentMode.hbm.xml"/>
+    <mapping resource="Model/Mapping/CommentsManager.hbm.xml"/>
+    <mapping resource="Model/Mapping/ProjectGopAgreement.hbm.xml"/>
+    <mapping resource="Model/Mapping/WorkHistory.hbm.xml"/>
+    <mapping resource="Model/Mapping/UniversalPayrollManager.hbm.xml"/>
+    <mapping resource="Model/Mapping/Designation.hbm.xml"/>
+    <mapping resource="Model/Mapping/ClaimStatus.hbm.xml"/>
+    <mapping resource="Model/Mapping/UserCredentials.hbm.xml"/>
+    <mapping resource="Model/Mapping/UserCredentialCategory.hbm.xml"/>
+    <mapping resource="Model/Mapping/EmployeeDocuments.hbm.xml"/>
+    <mapping resource="Model/Mapping/PettyCashTransactionHistory.hbm.xml"/>
+    <mapping resource="Model/Mapping/Attendance.hbm.xml"/>
+    <mapping resource="Model/Mapping/TransactionType.hbm.xml"/>
+    <mapping resource="Model/Mapping/Country.hbm.xml"/>
+    <mapping resource="Model/Mapping/HrClaimApprove.hbm.xml"/>
+    <mapping resource="Model/Mapping/ClaimType.hbm.xml"/>
+    <mapping resource="Model/Mapping/GeneralUserProfile.hbm.xml"/>
+    <mapping resource="Model/Mapping/UserCredentialIssuingManager.hbm.xml"/>
+    <mapping resource="Model/Mapping/GupGopManager.hbm.xml"/>
+    <mapping resource="Model/Mapping/Gender.hbm.xml"/>
+    <mapping resource="Model/Mapping/LoginSession.hbm.xml"/>
+    <mapping resource="Model/Mapping/ProjectTasks.hbm.xml"/>
+    <mapping resource="Model/Mapping/HelpTicketAttachments.hbm.xml"/>
+    <mapping resource="Model/Mapping/UserLoginHasSystemInterface.hbm.xml"/>
+    <mapping resource="Model/Mapping/NotificationType.hbm.xml"/>
+    <mapping resource="Model/Mapping/UserRoleHasSystemInterface.hbm.xml"/>
+    <mapping resource="Model/Mapping/LeaveRequest.hbm.xml"/>
+    <mapping resource="Model/Mapping/DocumentType.hbm.xml"/>
+    <mapping resource="Model/Mapping/NotificationManager.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>
