@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2023 10:58:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.UserLoginHasSystemInterface" table="user_login_has_system_interface" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="systemInterface" class="Model.Mapping.SystemInterface" fetch="select">
+            <column name="system_interface_si_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userLogin" class="Model.Mapping.UserLogin" fetch="select">
+            <column name="user_login_login_id" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2023 10:58:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.WorkHistory" table="work_history" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="designationByDesignationFrom" class="Model.Mapping.Designation" fetch="select">
+            <column name="designation_from" not-null="true" />
+        </many-to-one>
+        <many-to-one name="designationByDesignationTo" class="Model.Mapping.Designation" fetch="select">
+            <column name="designation_to" />
+        </many-to-one>
+        <many-to-one name="employee" class="Model.Mapping.Employee" fetch="select">
+            <column name="employee_id" not-null="true" />
+        </many-to-one>
+        <property name="dateFrom" type="date">
+            <column name="date_from" length="10" />
+        </property>
+        <property name="dateTo" type="date">
+            <column name="date_to" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

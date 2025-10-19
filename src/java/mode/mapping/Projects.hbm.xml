@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2023 10:58:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.Projects" table="projects" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="generalOrganizationProfile" class="Model.Mapping.GeneralOrganizationProfile" fetch="select">
+            <column name="general_organization_profile_id" />
+        </many-to-one>
+        <many-to-one name="status" class="Model.Mapping.Status" fetch="select">
+            <column name="status_id" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="65535" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="65535" />
+        </property>
+        <property name="startedDate" type="timestamp">
+            <column name="started_date" length="19" not-null="true" />
+        </property>
+        <property name="completedDate" type="timestamp">
+            <column name="completed_date" length="19" />
+        </property>
+        <property name="logoUrl" type="string">
+            <column name="logo_url" length="65535" />
+        </property>
+        <property name="projectsDocument" type="string">
+            <column name="projects_document" length="65535" />
+        </property>
+        <property name="isActive" type="java.lang.Boolean">
+            <column name="is_active" />
+        </property>
+        <set name="projectEmployeeses" table="project_employees" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="projects_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.ProjectEmployees" />
+        </set>
+        <set name="commentsManagers" table="comments_manager" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="projects_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.CommentsManager" />
+        </set>
+        <set name="projectTaskses" table="project_tasks" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="projects_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.ProjectTasks" />
+        </set>
+        <set name="userCredentialses" table="user_credentials" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="projects_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.UserCredentials" />
+        </set>
+        <set name="projectGopAgreements" table="project_gop_agreement" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="projects_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.ProjectGopAgreement" />
+        </set>
+        <set name="helpTickets" table="help_ticket" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="projects_id" />
+            </key>
+            <one-to-many class="Model.Mapping.HelpTicket" />
+        </set>
+    </class>
+</hibernate-mapping>

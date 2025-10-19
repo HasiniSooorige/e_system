@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 21, 2024 7:35:04 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.TaskAssignEmployees" table="task_assign_employees" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="projectEmployees" class="Model.Mapping.ProjectEmployees" fetch="select">
+            <column name="project_employees_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="projectTasks" class="Model.Mapping.ProjectTasks" fetch="select">
+            <column name="project_tasks_id" not-null="true" />
+        </many-to-one>
+        <property name="isActive" type="java.lang.Boolean">
+            <column name="is_active" not-null="true" />
+        </property>
+        <property name="startDate" type="date">
+            <column name="start_date" length="10" />
+        </property>
+        <property name="endDate" type="date">
+            <column name="end_date" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

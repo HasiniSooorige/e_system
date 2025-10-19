@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2023 10:58:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.ProjectTaskAttachments" table="project_task_attachments" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="projectTasks" class="Model.Mapping.ProjectTasks" fetch="select">
+            <column name="project_tasks_id" not-null="true" />
+        </many-to-one>
+        <property name="url" type="string">
+            <column name="url" length="65535" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

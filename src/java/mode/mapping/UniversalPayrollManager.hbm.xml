@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2023 10:58:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.UniversalPayrollManager" table="universal_payroll_manager" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="employee" class="Model.Mapping.Employee" fetch="select">
+            <column name="employees_employees_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="generalUserProfileByGeneralUserProfileGupIdAddedBy" class="Model.Mapping.GeneralUserProfile" fetch="select">
+            <column name="general_user_profile_gupId_added_by" not-null="true" />
+        </many-to-one>
+        <many-to-one name="generalUserProfileByGeneralUserProfileGupIdUpdatedBy" class="Model.Mapping.GeneralUserProfile" fetch="select">
+            <column name="general_user_profile_gupId_updated_by" />
+        </many-to-one>
+        <property name="basicSalary" type="java.lang.Double">
+            <column name="basic_salary" precision="22" scale="0" />
+        </property>
+        <property name="br" type="java.lang.Double">
+            <column name="br" precision="22" scale="0" />
+        </property>
+        <property name="noPay" type="java.lang.Double">
+            <column name="no_pay" precision="22" scale="0" />
+        </property>
+        <property name="grossSalary" type="java.lang.Double">
+            <column name="gross_salary" precision="22" scale="0" />
+        </property>
+        <property name="epf8" type="java.lang.Double">
+            <column name="epf_8" precision="22" scale="0" />
+        </property>
+        <property name="epf12" type="java.lang.Double">
+            <column name="epf_12" precision="22" scale="0" />
+        </property>
+        <property name="attendance" type="java.lang.Double">
+            <column name="attendance" precision="22" scale="0" />
+        </property>
+        <property name="performance" type="java.lang.Double">
+            <column name="performance" precision="22" scale="0" />
+        </property>
+        <property name="incentive" type="java.lang.Double">
+            <column name="incentive" precision="22" scale="0" />
+        </property>
+        <property name="travelling" type="java.lang.Double">
+            <column name="travelling" precision="22" scale="0" />
+        </property>
+        <property name="houseRental" type="java.lang.Double">
+            <column name="house_rental" precision="22" scale="0" />
+        </property>
+        <property name="salaryAdvanced" type="java.lang.Double">
+            <column name="salary_advanced" precision="22" scale="0" />
+        </property>
+        <property name="otherDeduction" type="java.lang.Double">
+            <column name="other_deduction" precision="22" scale="0" />
+        </property>
+        <property name="totalSalary" type="java.lang.Double">
+            <column name="total_salary" precision="22" scale="0" />
+        </property>
+        <property name="salaryDate" type="date">
+            <column name="salary_date" length="10" />
+        </property>
+        <property name="recordAddedDate" type="timestamp">
+            <column name="record_added_date" length="19" />
+        </property>
+        <property name="lastUpdateTime" type="timestamp">
+            <column name="last_update_time" length="19" />
+        </property>
+        <property name="etf3" type="double">
+            <column name="etf_3" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="tax" type="double">
+            <column name="tax" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

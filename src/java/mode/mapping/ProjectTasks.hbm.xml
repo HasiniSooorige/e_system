@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 21, 2024 7:35:04 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.ProjectTasks" table="project_tasks" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="projectTaskPriority" class="Model.Mapping.ProjectTaskPriority" fetch="select">
+            <column name="project_task_priority_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="projects" class="Model.Mapping.Projects" fetch="select">
+            <column name="projects_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="status" class="Model.Mapping.Status" fetch="select">
+            <column name="status_id" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="65535" />
+        </property>
+        <property name="note" type="string">
+            <column name="note" length="65535" />
+        </property>
+        <property name="assignedDate" type="timestamp">
+            <column name="assigned_date" length="19" />
+        </property>
+        <property name="dueDate" type="date">
+            <column name="due_date" length="10" />
+        </property>
+        <property name="startDate" type="date">
+            <column name="start_date" length="10" />
+        </property>
+        <property name="completedDate" type="date">
+            <column name="completed_date" length="10" />
+        </property>
+        <property name="endDate" type="date">
+            <column name="end_date" length="10" />
+        </property>
+        <property name="isActive" type="java.lang.Boolean">
+            <column name="is_active" />
+        </property>
+        <set name="taskAssignEmployeeses" table="task_assign_employees" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="project_tasks_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.TaskAssignEmployees" />
+        </set>
+        <set name="commentsManagers" table="comments_manager" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="project_tasks_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.CommentsManager" />
+        </set>
+        <set name="projectTaskAttachmentses" table="project_task_attachments" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="project_tasks_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.ProjectTaskAttachments" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2023 10:58:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.Voucher" table="voucher" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="generalOrganizationProfile" class="Model.Mapping.GeneralOrganizationProfile" fetch="select">
+            <column name="general_organization_profile_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="generalUserProfile" class="Model.Mapping.GeneralUserProfile" fetch="select">
+            <column name="general_user_profile_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="loginSession" class="Model.Mapping.LoginSession" fetch="select">
+            <column name="login_session_id" />
+        </many-to-one>
+        <many-to-one name="paymentMode" class="Model.Mapping.PaymentMode" fetch="select">
+            <column name="payment_mode_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="voucherType" class="Model.Mapping.VoucherType" fetch="select">
+            <column name="voucher_type_id" not-null="true" />
+        </many-to-one>
+        <property name="vid" type="string">
+            <column name="vid" length="45" />
+        </property>
+        <property name="voucherTotal" type="java.lang.Double">
+            <column name="voucher_total" precision="22" scale="0" />
+        </property>
+        <property name="date" type="timestamp">
+            <column name="date" length="19" />
+        </property>
+        <property name="isActive" type="java.lang.Boolean">
+            <column name="is_active" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="65535" />
+        </property>
+        <property name="paymentDate" type="date">
+            <column name="payment_date" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
