@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2023 10:58:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.Claims" table="claims" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="claimStatus" class="Model.Mapping.ClaimStatus" fetch="select">
+            <column name="claim_status_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="employee" class="Model.Mapping.Employee" fetch="select">
+            <column name="employee_id" not-null="true" />
+        </many-to-one>
+        <property name="addedDate" type="timestamp">
+            <column name="added_date" length="19" />
+        </property>
+        <property name="totalAmount" type="java.lang.Double">
+            <column name="total_amount" precision="22" scale="0" />
+        </property>
+        <property name="note" type="string">
+            <column name="note" length="1000" />
+        </property>
+        <property name="status" type="java.lang.Boolean">
+            <column name="status" />
+        </property>
+        <set name="claimApprovals" table="claim_approval" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="claims_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.ClaimApproval" />
+        </set>
+        <set name="claimItemses" table="claim_items" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="claims_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.ClaimItems" />
+        </set>
+        <set name="hrClaimApproves" table="hr_claim_approve" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="claims_id" />
+            </key>
+            <one-to-many class="Model.Mapping.HrClaimApprove" />
+        </set>
+    </class>
+</hibernate-mapping>

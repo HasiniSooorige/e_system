@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2023 10:58:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.GeneralOrganizationProfile" table="general_organization_profile" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="country" class="Model.Mapping.Country" fetch="select">
+            <column name="country_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="organizationType" class="Model.Mapping.OrganizationType" fetch="select">
+            <column name="organization_type_id" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" />
+        </property>
+        <property name="address1" type="string">
+            <column name="address1" />
+        </property>
+        <property name="address2" type="string">
+            <column name="address2" />
+        </property>
+        <property name="address3" type="string">
+            <column name="address3" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="created_date" length="19" />
+        </property>
+        <property name="logo" type="string">
+            <column name="logo" length="65535" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="contactNo" type="string">
+            <column name="contact_no" length="45" not-null="true" />
+        </property>
+        <property name="faxNo" type="string">
+            <column name="fax_no" length="45" />
+        </property>
+        <set name="gupGopManagers" table="gup_gop_manager" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="general_organization_profile_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.GupGopManager" />
+        </set>
+        <set name="employees" table="employee" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="general_organization_profile_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.Employee" />
+        </set>
+        <set name="projectses" table="projects" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="general_organization_profile_id" />
+            </key>
+            <one-to-many class="Model.Mapping.Projects" />
+        </set>
+        <set name="projectGopAgreements" table="project_gop_agreement" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="general_organization_profile_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.ProjectGopAgreement" />
+        </set>
+        <set name="vouchers" table="voucher" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="general_organization_profile_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.Voucher" />
+        </set>
+    </class>
+</hibernate-mapping>

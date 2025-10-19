@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2023 10:58:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.PettyCashTransactionHistoryDocument" table="petty_cash_transaction_history_document" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="pettyCashTransactionHistory" class="Model.Mapping.PettyCashTransactionHistory" fetch="select">
+            <column name="petty_cash_transaction_history_id" not-null="true" />
+        </many-to-one>
+        <property name="amount" type="java.lang.Double">
+            <column name="amount" precision="22" scale="0" />
+        </property>
+        <property name="transactionDate" type="timestamp">
+            <column name="transaction_date" length="19" />
+        </property>
+        <property name="doc" type="string">
+            <column name="doc" length="100" />
+        </property>
+        <property name="uploadedDate" type="timestamp">
+            <column name="uploaded_date" length="19" />
+        </property>
+        <property name="expenseDescription" type="string">
+            <column name="expense_description" length="65535" />
+        </property>
+    </class>
+</hibernate-mapping>

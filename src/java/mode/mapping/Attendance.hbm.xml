@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2023 10:58:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.Attendance" table="attendance" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="generalUserProfile" class="Model.Mapping.GeneralUserProfile" fetch="select">
+            <column name="general_user_profile_id" not-null="true" />
+        </many-to-one>
+        <property name="date" type="date">
+            <column name="date" length="10" not-null="true" />
+        </property>
+        <property name="inTime" type="time">
+            <column name="in_time" length="8" not-null="true" />
+        </property>
+        <property name="outTime" type="time">
+            <column name="out_time" length="8" />
+        </property>
+        <property name="isMarked" type="java.lang.Boolean">
+            <column name="is_marked" />
+        </property>
+    </class>
+</hibernate-mapping>

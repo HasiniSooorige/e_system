@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2023 10:58:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.HelpTicketSubmitType" table="help_ticket_submit_type" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="45" />
+        </property>
+        <set name="helpTickets" table="help_ticket" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="help_ticket_submit_type_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.HelpTicket" />
+        </set>
+    </class>
+</hibernate-mapping>

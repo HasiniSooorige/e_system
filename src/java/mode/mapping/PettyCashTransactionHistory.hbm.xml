@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2023 10:58:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.PettyCashTransactionHistory" table="petty_cash_transaction_history" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="employee" class="Model.Mapping.Employee" fetch="select">
+            <column name="approval_by" />
+        </many-to-one>
+        <many-to-one name="pettyCashApprovalLevel" class="Model.Mapping.PettyCashApprovalLevel" fetch="select">
+            <column name="petty_cash_approval_level_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pettyCashWallet" class="Model.Mapping.PettyCashWallet" fetch="select">
+            <column name="petty_cash_wallet_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="transactionType" class="Model.Mapping.TransactionType" fetch="select">
+            <column name="transaction_type_id" not-null="true" />
+        </many-to-one>
+        <property name="amount" type="java.lang.Double">
+            <column name="amount" precision="22" scale="0" />
+        </property>
+        <property name="transactionDate" type="timestamp">
+            <column name="transaction_date" length="19" />
+        </property>
+        <property name="approvalDate" type="timestamp">
+            <column name="approval_date" length="19" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="65535" />
+        </property>
+        <property name="comment" type="string">
+            <column name="comment" length="45" />
+        </property>
+        <set name="pettyCashTransactionHistoryDocuments" table="petty_cash_transaction_history_document" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="petty_cash_transaction_history_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.PettyCashTransactionHistoryDocument" />
+        </set>
+    </class>
+</hibernate-mapping>

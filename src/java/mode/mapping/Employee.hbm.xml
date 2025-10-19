@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2023 10:58:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.Employee" table="employee" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="designation" class="Model.Mapping.Designation" fetch="select">
+            <column name="designation_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="generalOrganizationProfile" class="Model.Mapping.GeneralOrganizationProfile" fetch="select">
+            <column name="general_organization_profile_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="generalUserProfile" class="Model.Mapping.GeneralUserProfile" fetch="select">
+            <column name="general_user_profile_id" not-null="true" />
+        </many-to-one>
+        <property name="registeredDate" type="timestamp">
+            <column name="registered_date" length="19" />
+        </property>
+        <property name="epfNo" type="string">
+            <column name="epf_no" length="45" />
+        </property>
+        <property name="isActive" type="java.lang.Boolean">
+            <column name="is_active" not-null="true" />
+        </property>
+        <property name="resignationDate" type="date">
+            <column name="resignation_date" length="10" />
+        </property>
+        <property name="isEpf" type="java.lang.Boolean">
+            <column name="is_epf" />
+        </property>
+        <set name="claimApprovals" table="claim_approval" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="employee_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.ClaimApproval" />
+        </set>
+        <set name="projectEmployeeses" table="project_employees" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="employee_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.ProjectEmployees" />
+        </set>
+        <set name="universalPayrollManagers" table="universal_payroll_manager" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="employees_employees_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.UniversalPayrollManager" />
+        </set>
+        <set name="employeeDocumentses" table="employee_documents" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="employee_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.EmployeeDocuments" />
+        </set>
+        <set name="claimses" table="claims" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="employee_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.Claims" />
+        </set>
+        <set name="leaveRequestsForEmployeeIdApprovedBy" table="leave_request" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="employee_id_approved_by" />
+            </key>
+            <one-to-many class="Model.Mapping.LeaveRequest" />
+        </set>
+        <set name="leaveRequestsForEmployeeId" table="leave_request" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="employee_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.LeaveRequest" />
+        </set>
+        <set name="pettyCashTransactionHistories" table="petty_cash_transaction_history" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="approval_by" />
+            </key>
+            <one-to-many class="Model.Mapping.PettyCashTransactionHistory" />
+        </set>
+        <set name="pettyCashWallets" table="petty_cash_wallet" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="employee_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.PettyCashWallet" />
+        </set>
+        <set name="hrClaimApproves" table="hr_claim_approve" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="employee_id" />
+            </key>
+            <one-to-many class="Model.Mapping.HrClaimApprove" />
+        </set>
+        <set name="workHistories" table="work_history" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="employee_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.WorkHistory" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2023 10:58:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.ClaimApproval" table="claim_approval" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="claimApprovalType" class="Model.Mapping.ClaimApprovalType" fetch="select">
+            <column name="claim_approval_type_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="claims" class="Model.Mapping.Claims" fetch="select">
+            <column name="claims_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="employee" class="Model.Mapping.Employee" fetch="select">
+            <column name="employee_id" not-null="true" />
+        </many-to-one>
+        <property name="approvedDate" type="timestamp">
+            <column name="approved_date" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2023 10:58:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.GeneralUserProfile" table="general_user_profile" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="country" class="Model.Mapping.Country" fetch="select">
+            <column name="country_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="gender" class="Model.Mapping.Gender" fetch="select">
+            <column name="gender_id" />
+        </many-to-one>
+        <property name="nic" type="string">
+            <column name="nic" length="45" />
+        </property>
+        <property name="firstName" type="string">
+            <column name="first_name" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" />
+        </property>
+        <property name="address1" type="string">
+            <column name="address1" length="1000" />
+        </property>
+        <property name="address2" type="string">
+            <column name="address2" length="1000" />
+        </property>
+        <property name="address3" type="string">
+            <column name="address3" length="1000" />
+        </property>
+        <property name="mobileNo" type="string">
+            <column name="mobile_no" length="45" />
+        </property>
+        <property name="homeNo" type="string">
+            <column name="home_no" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="profileCreatedDate" type="timestamp">
+            <column name="profile_created_date" length="19" />
+        </property>
+        <property name="faxNo" type="string">
+            <column name="fax_no" length="15" />
+        </property>
+        <property name="contactNo" type="string">
+            <column name="contact_no" length="12" />
+        </property>
+        <property name="nameWithIn" type="string">
+            <column name="name_with_in" />
+        </property>
+        <property name="emergencyContactNo" type="string">
+            <column name="emergency_contact_no" length="12" />
+        </property>
+        <property name="dob" type="date">
+            <column name="dob" length="10" />
+        </property>
+        <property name="profileImgUrl" type="string">
+            <column name="profile_img_url" />
+        </property>
+        <set name="helpTickets" table="help_ticket" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="requested_by"/>
+            </key>
+            <one-to-many class="Model.Mapping.HelpTicket"/>
+        </set>
+        <set name="helpTicketResponds" table="help_ticket_respond" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="responded_gup_id" />
+            </key>
+            <one-to-many class="Model.Mapping.HelpTicketRespond" />
+        </set>       
+        <set name="userCredentialses" table="user_credentials" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entered_by_employee_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.UserCredentials" />
+        </set>
+        <set name="vouchers" table="voucher" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="general_user_profile_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.Voucher" />
+        </set>
+        <set name="universalPayrollManagersForGeneralUserProfileGupIdAddedBy" table="universal_payroll_manager" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="general_user_profile_gupId_added_by" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.UniversalPayrollManager" />
+        </set>
+        <set name="universalPayrollManagersForGeneralUserProfileGupIdUpdatedBy" table="universal_payroll_manager" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="general_user_profile_gupId_updated_by" />
+            </key>
+            <one-to-many class="Model.Mapping.UniversalPayrollManager" />
+        </set>
+        <set name="userCredentialHistories" table="user_credential_history" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="updated_by_employee_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.UserCredentialHistory" />
+        </set>
+        <set name="userCredentialIssuingManagers" table="user_credential_issuing_manager" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="employee_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.UserCredentialIssuingManager" />
+        </set>
+        <set name="notificationManagers" table="notification_manager" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="employee_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.NotificationManager" />
+        </set>
+        <set name="userLogins" table="user_login" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="general_user_profile_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.UserLogin" />
+        </set>
+        <set name="gupGopManagers" table="gup_gop_manager" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="general_user_profile_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.GupGopManager" />
+        </set>
+        <set name="attendances" table="attendance" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="general_user_profile_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.Attendance" />
+        </set>
+        <set name="employees" table="employee" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="general_user_profile_id" not-null="true" />
+            </key>
+            <one-to-many class="Model.Mapping.Employee" />
+        </set>
+        <set name="commentsManagers" table="comments_manager" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="general_user_profile_id" not-null="true"/>
+            </key>
+            <one-to-many class="Model.Mapping.CommentsManager"/>
+        </set>
+    </class>
+</hibernate-mapping>

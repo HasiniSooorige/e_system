@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2023 10:58:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Mapping.LeaveRequest" table="leave_request" catalog="exon_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="employeeByEmployeeIdApprovedBy" class="Model.Mapping.Employee" fetch="select">
+            <column name="employee_id_approved_by" />
+        </many-to-one>
+        <many-to-one name="employeeByEmployeeId" class="Model.Mapping.Employee" fetch="select">
+            <column name="employee_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="leaveApprovalStatus" class="Model.Mapping.LeaveApprovalStatus" fetch="select">
+            <column name="leave_approval_status_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="leaveType" class="Model.Mapping.LeaveType" fetch="select">
+            <column name="leave_type_id" not-null="true" />
+        </many-to-one>
+        <property name="requestedDate" type="date">
+            <column name="requested_date" length="10" />
+        </property>
+        <property name="reason" type="string">
+            <column name="reason" length="65535" />
+        </property>
+        <property name="comment" type="string">
+            <column name="comment" length="65535" />
+        </property>
+        <property name="dateFrom" type="timestamp">
+            <column name="date_from" length="19" />
+        </property>
+        <property name="dateTo" type="timestamp">
+            <column name="date_to" length="19" />
+        </property>
+        <property name="approvedDate" type="date">
+            <column name="approved_date" length="10" />
+        </property>
+        <property name="rejectReason" type="string">
+            <column name="reject_reason" length="65535" />
+        </property>
+    </class>
+</hibernate-mapping>
